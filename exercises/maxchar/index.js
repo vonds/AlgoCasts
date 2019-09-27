@@ -5,7 +5,7 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 const maxChar = str => {
-    let charMap = {}
+    const charMap = {}
     let max = 0
     let maxChar = ''
     for (let char of str) {
@@ -20,9 +20,5 @@ const maxChar = str => {
     }
     return maxChar
 }
-
-
-
-
 
 module.exports = maxChar;
