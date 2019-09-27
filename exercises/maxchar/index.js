@@ -24,4 +24,5 @@ const maxChar = str => {
 
 
 
+
 module.exports = maxChar;
