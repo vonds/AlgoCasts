@@ -11,7 +11,6 @@ const maxChar = str => {
     for (let char of str) {
         charMap[char] = charMap[char] + 1 || 1
     }
-
     for (let char in charMap) {
         if (charMap[char] > max) {
             max = charMap[char]
@@ -20,5 +19,7 @@ const maxChar = str => {
     }
     return maxChar
 }
+
+
 
 module.exports = maxChar;
