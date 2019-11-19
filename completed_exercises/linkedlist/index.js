@@ -48,6 +48,7 @@ class LinkedList {
     }
   }
 
+
   clear() {
     this.head = null;
   }
@@ -59,6 +60,7 @@ class LinkedList {
 
     this.head = this.head.next;
   }
+
 
   removeLast() {
     if (!this.head) {
