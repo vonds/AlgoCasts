@@ -1,7 +1,8 @@
-const fibonacci = (number, memory = {}) => {
-  if (number < 0) return 0;
-  if (number === 1 || number === 2) return 1;
-  if (number === 3) return 2;
-  return (memory[number] = fibonacci(number - 1) + fibonacci(number - 2));
+const fibonacci = (n, memory = {}) => {
+  if (n in memory) return memory[n];
+  if (n < 0) return 0;
+  if (n < 3) return 1;
+  return (memory[n] = fibonacci(n - 1, memory) + fibonacci(n - 2, memory));
 };
-console.log(fibonacci(5));
+
+console.log(fibonacci(900));
