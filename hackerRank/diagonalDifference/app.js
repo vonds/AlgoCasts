@@ -1,13 +1,14 @@
 function diagonalDifference(arr) {
-  const size = 3;
-  const parts = [];
-  for (let i = 0; i < arr.length; i += size) {
-    parts.push(arr.slice(i, i + size));
+  const length = arr.length;
+  let diagonal1 = 0,
+    diagonal2 = 0;
+
+  for (let i = 0; i < length; i++) {
+    diagonal1 += arr[i][i];
+    diagonal2 += arr[length - 1 - i][i];
   }
-  console.log(parts[1][1]);
-  const rightDiagonal = parts[0][2] + parts[1][1] + parts[2][0];
-  const leftDiagonal = parts[0][0] + parts[1][1] + parts[2][2];
-  return Math.abs(leftDiagonal - rightDiagonal);
+
+  return Math.abs(diagonal1 - diagonal2);
 }
 
 diagonalDifference([11, 2, 4, 4, 5, 6, 10, 8, -12]);
