@@ -9,3 +9,5 @@ const countSteps = (steps, memory = {}) => {
     countSteps(steps - 2, memory) +
     countSteps(steps - 3, memory));
 };
+
+console.log(countSteps(200));
