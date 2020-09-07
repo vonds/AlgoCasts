@@ -6,7 +6,8 @@ const countSteps = (steps, memory = {}) => {
   if (steps === 3) return 4
   return (memory[steps] =
     countSteps(steps - 1, memory) +
-    countSteps(steps - 2, memory)
+    countSteps(steps - 2, memory) +
+    countSteps(steps - 3, memory )
   )
 }
 

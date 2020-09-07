@@ -62,21 +62,11 @@ class LinkedList {
             node = node.next
         }
         previous.next = null
-
-        // *** look up how to do without as many if statments*** (check previous after current node)
-
-        // if (this.head) {
-        //     let previous = this.head
-        //     let node = this.head.next
-        //     while (node) {
-        //         previous = node
-        //         node = node.next
-        //     }
-        //     previous.next = null
-        // } else {
-        //     return null
-        // }
     }
+
+  removeLast() {
+      if ()
+  }
 
     insertLast(data) {
         const last = this.getLast()
