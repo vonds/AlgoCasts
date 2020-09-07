@@ -9,6 +9,41 @@ class Node {
     }
 }
 
+// 1
+class Node {
+
+}
+
+// 2
+class Node {
+
+}
+
+// 3
+class Node {
+
+}
+
+// 4
+class Node {
+
+}
+
+// 5
+class Node {
+    
+}
+
+// 6
+
+// 7
+
+// 8
+
+// 9
+
+// 10
+
 class LinkedList {
     constructor() {
         this.head = null
@@ -64,10 +99,7 @@ class LinkedList {
         previous.next = null
     }
 
-  removeLast() {
-      if ()
-  }
-
+ 
     insertLast(data) {
         const last = this.getLast()
         if (last) {

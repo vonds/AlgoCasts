@@ -154,7 +154,7 @@ class LinkedList {
     let node = this.head;
     while (node) {
       yield node;
-      node = node.next;
+      node = node.ne xt;
     }
   }
 }
