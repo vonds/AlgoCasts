@@ -40,7 +40,7 @@ function mergeSort(arr) {
     const center = Math.floor(arr.length / 2);
     const left = arr.slice(0, center);
     const right = arr.slice(center);
-    merge(mergeSort(left), mergeSort(right))
+    return merge(mergeSort(left), mergeSort(right));
 }
 
 function merge(left, right) {
@@ -55,6 +55,7 @@ function merge(left, right) {
     }
    return  [...results, ...left, ...right];
 }
+
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
 

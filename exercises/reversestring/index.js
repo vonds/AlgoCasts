@@ -10,5 +10,15 @@ const reverse = str => {
     return str.split('').reduce((rev, char) => char + rev, '')
 }
 
+const reverseString3 = str => {
+    let reversed = '';
+    for(let character of str) {
+        reversed = character + reversed;
+    }
+    return reversed;
+}
+
+console.log(reverseString3('milk'));
+
 
 module.exports = reverse;
