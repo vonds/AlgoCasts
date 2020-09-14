@@ -10,8 +10,43 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+    add(data) {
+        this.children.push(new Node(data));
+    }
+}
 
-class Tree {}
+class Tree {
+    traverseBF(fn) {
+        const arr = [this.root];
+        while(arr.length) {
+            const node = arr.shift();
+            arr.push(...node.children);
+            fn(node);
+        }
+    }
+}
+
+
+
+const merge = (left, right) => {
+    const results = [];
+    while(left.length && right.length) {
+        if(left[0] < right[0]) {
+            results.push(left.shift());
+        } else {
+            results.push(right.shift());
+        }
+    }
+    return [...results, ... left, ...right];
+}
+
+const mergeSort = arr => {
+    if (arr.length === 1) return arr;
+    const center = Max.floor(arr.length / 2);
+    const left = arr.slice(0, center);
+    const right = arr.slice(center);
+    return merge(mergeSort(left), mergeSort(right));
+}
 
 module.exports = { Tree, Node };
