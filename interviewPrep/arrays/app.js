@@ -5,166 +5,18 @@ class MyArray {
         this.data = {};
     }
 
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
     get(index) {
         return this.data[index];
     }
-
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
-    push(item) {
-        this.data[this.length] = item;
-        this.length++;
-        return this.length;
-    }
-
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
-    pop() {
-        const lastItem = this.data[this.length - 1];
-        delete this.data[this.length - 1];
-        this.length--;
-        return lastItem;
-    }
-
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
-    delete(index) {
-        const item = this.data[index];
-        this.shiftItems(index);
-        return item;
-    }
-
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
-    shiftItems(index) {
-        for(let i = index; i < this.length - 1; i++) {
-            this.data[i] = this.data[i + 1] 
-        }
-        delete this.data[this.length - 1];
-        this.length--;
-    }
-
-    // 1
-
-    // 2
-
-    // 3
-
-    // 4
-
-    // 5
-
-    // 6
-
-    // 7
-
-    // 8
-
-    // 9
-
-    // 10
-
 }
 
 const newArray = new MyArray();
-newArray.push('hi');
-newArray.push('you');
-newArray.push('!');
+// newArray.push('hi');
+// newArray.push('you');
+// newArray.push('!');
 // newArray.pop();
 // newArray.pop();
-newArray.delete(1);
+// newArray.delete(1);
 // console.log(newArray);
 
 function reverseStr(str) {
@@ -206,7 +58,7 @@ function reverseStr6(str) {
 
 // console.log(reverseStr4('Alex'))
 
-function mergeSortedArrays(left, right) {
+function merge(left, right) {
     if(!Array.isArray(left) || !Array.isArray(right)) return;
     const results = [];
     while(left.length && right.length) {
@@ -219,4 +71,61 @@ function mergeSortedArrays(left, right) {
     return [...results, ...left, ...right];
 }
 
-console.log(mergeSortedArrays([], [4, 6, 30]));
+function mergeSort(arr) {
+    if(arr.length === 1) return arr;
+    const center = Math.floor(arr.length / 2);
+    const left = arr.slice(0, center);
+    const right = arr.slice(center);
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+class Tree {
+    traverseDF(fn) {
+        const arr = [this.root];
+        while(arr.length) {
+            const node = arr.shift();
+            arr.unshift(...node.children);
+            fn(node);
+        }
+    }
+}
+
+
+
+// console.log(mergeSort([6, -13, 7, 29, 5980], [4, 6, 30]));
+
+// const isPalindrome = num => {
+//     const str = num.toString(); 
+//     const reversed = str.split('').reverse().join('')
+//     return str === reversed;
+// }
+
+// const isPalindromeOfTheProductOfTwoThreeDigitNumbers = () => {
+//     // 999 - 100
+//     for(let i = 999; i >= 100; i--) {
+//         for(let j = 999; j >= 100; j--) {
+//             const product = j * i;
+//             if(isPalindrome(product)) {
+//                 return product;
+//             }
+//         }
+//     }
+// }
+
+// console.log(isPalindromeOfTheProductOfTwoThreeDigitNumbers());
+
+const reverseInt = num => {
+    let reversed = '';
+    const str = [...num.toString()]; // num + '';
+    for(let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    
+    if(!Math.sign(num)) return parseInt(reversed) * -1;
+    return parseInt(reversed)
+}
+
+console.log('type: ', typeof reverseInt(-50)); // number
+console.log('answer: ', reverseInt(-50)); // 321
+
+
