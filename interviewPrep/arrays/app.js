@@ -58,37 +58,37 @@ function reverseStr6(str) {
 
 // console.log(reverseStr4('Alex'))
 
-function merge(left, right) {
-    if(!Array.isArray(left) || !Array.isArray(right)) return;
-    const results = [];
-    while(left.length && right.length) {
-        if(left[0] < right[0]) {
-            results.push(left.shift());
-        } else {
-            results.push(right.shift());
-        }
-    }
-    return [...results, ...left, ...right];
-}
+// function merge(left, right) {
+//     if(!Array.isArray(left) || !Array.isArray(right)) return;
+//     const results = [];
+//     while(left.length && right.length) {
+//         if(left[0] < right[0]) {
+//             results.push(left.shift());
+//         } else {
+//             results.push(right.shift());
+//         }
+//     }
+//     return [...results, ...left, ...right];
+// }
 
-function mergeSort(arr) {
-    if(arr.length === 1) return arr;
-    const center = Math.floor(arr.length / 2);
-    const left = arr.slice(0, center);
-    const right = arr.slice(center);
-    return merge(mergeSort(left), mergeSort(right));
-}
+// function mergeSort(arr) {
+//     if(arr.length === 1) return arr;
+//     const center = Math.floor(arr.length / 2);
+//     const left = arr.slice(0, center);
+//     const right = arr.slice(center);
+//     return merge(mergeSort(left), mergeSort(right));
+// }
 
-class Tree {
-    traverseDF(fn) {
-        const arr = [this.root];
-        while(arr.length) {
-            const node = arr.shift();
-            arr.unshift(...node.children);
-            fn(node);
-        }
-    }
-}
+// class Tree {
+//     traverseDF(fn) {
+//         const arr = [this.root];
+//         while(arr.length) {
+//             const node = arr.shift();
+//             arr.unshift(...node.children);
+//             fn(node);
+//         }
+//     }
+// }
 
 
 
@@ -114,18 +114,94 @@ class Tree {
 
 // console.log(isPalindromeOfTheProductOfTwoThreeDigitNumbers());
 
-const reverseInt = num => {
-    let reversed = '';
-    const str = [...num.toString()]; // num + '';
-    for(let i = str.length - 1; i >= 0; i--) {
-        reversed += str[i];
-    }
+// const reverseInt = num => {
+//     let reversed = '';
+//     const str = [...num.toString()]; // num + '';
+//     for(let i = str.length - 1; i >= 0; i--) {
+//         reversed += str[i];
+//     }
     
-    if(!Math.sign(num)) return parseInt(reversed) * -1;
-    return parseInt(reversed)
+//     if(!Math.sign(num)) return parseInt(reversed) * -1;
+//     return parseInt(reversed)
+// }
+
+// console.log('type: ', typeof reverseInt(-50)); // number
+// console.log('answer: ', reverseInt(-50)); // 321
+
+
+// const createCharacterHash = str => {
+//     if (typeof str !== 'string') return;
+//     const characterHash = {};
+//     for (let char of str) {
+//         characterHash[char] = characterHash[char] + 1 || 1;
+//     }
+//     return characterHash;
+// }
+
+// const maxChar = str => {
+//     if (typeof str !== 'string') return;
+//     let max = 0;
+//     let maxChar = '';
+//     const characterHash = createCharacterHash(str);
+//     for (let char in characterHash) {
+//         if (characterHash[char] > max) {
+//             max = characterHash[char];
+//             maxChar = char;
+//         }
+//     }
+//     return maxChar;
+// }
+
+// console.log(maxChar('dictionaries are the same as hashmaps/tables'));
+
+// input arr
+// output arr
+// removeDuplicates
+
+const hasDuplicates = arr => {
+    return new Set(arr).size !== arr.length;
 }
 
-console.log('type: ', typeof reverseInt(-50)); // number
-console.log('answer: ', reverseInt(-50)); // 321
+const merge = (left, right) => {
+    const results = [];
+    while(left.length && right.length) {
+        if(left[0] < right[0]) {
+            results.push(left.shift());
+        } else {
+            results.push(right.shift())
+        }
+    }
+    return [...results, ...left, ...right];
+}
 
 
+const mergeSort = arr => {
+    if(!Array.isArray(arr)) return 'not an array';
+    if(arr.length <= 1) return arr;
+    const center = Math.floor(arr.length / 2);
+    const left = arr.slice(0, center); 
+    const right = arr.slice(center); 
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+in -> [1, 5, 6, 9, 8]
+       left [1, 5] 
+        right [6, 9, 8]
+
+        [1,  5]                        
+        left [1]
+        right [5]
+
+const removeDuplicates = arr => {
+    if(!hasDuplicates(arr)) return arr;
+    const sortedArr = mergeSort(arr.slice());
+    const results = [];
+   for(let i = 0; i < sortedArr.length; i++) {
+       if(sortedArr[i + 1] !== sortedArr[i]) {
+           results.push(sortedArr[i]);
+       }
+   }
+   return results;
+}
+
+console.log(removeDuplicates([5, 7, 9, 3,10, 22, 2, 9, 9, 22, 1000000 , 8, 10])) // [2, 3, 5, 7, 8,, 9, 10]
