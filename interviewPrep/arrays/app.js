@@ -184,13 +184,6 @@ const mergeSort = arr => {
     return merge(mergeSort(left), mergeSort(right));
 }
 
-in -> [1, 5, 6, 9, 8]
-       left [1, 5] 
-        right [6, 9, 8]
-
-        [1,  5]                        
-        left [1]
-        right [5]
 
 const removeDuplicates = arr => {
     if(!hasDuplicates(arr)) return arr;
@@ -204,4 +197,19 @@ const removeDuplicates = arr => {
    return results;
 }
 
-console.log(removeDuplicates([5, 7, 9, 3,10, 22, 2, 9, 9, 22, 1000000 , 8, 10])) // [2, 3, 5, 7, 8,, 9, 10]
+
+class MyArray {
+    delete(index) {
+        const item = this.data[index];
+        this.shiftItmes(index);
+        return item;
+    }
+
+    shiftItems(index) {
+        for(let i = index; i < this.length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+        delete this.data[this.length - 1];
+        this.length--;
+    }
+}
