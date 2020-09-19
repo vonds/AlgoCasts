@@ -158,9 +158,65 @@ function reverseStr6(str) {
 // output arr
 // removeDuplicates
 
-const hasDuplicates = arr => {
-    return new Set(arr).size !== arr.length;
-}
+// const hasDuplicates = arr => {
+//     return new Set(arr).size !== arr.length;
+// }
+
+// const merge = (left, right) => {
+//     const results = [];
+//     while(left.length && right.length) {
+//         if(left[0] < right[0]) {
+//             results.push(left.shift());
+//         } else {
+//             results.push(right.shift())
+//         }
+//     }
+//     return [...results, ...left, ...right];
+// }
+
+
+// const mergeSort = arr => {
+//     if(!Array.isArray(arr)) return 'not an array';
+//     if(arr.length <= 1) return arr;
+//     const center = Math.floor(arr.length / 2);
+//     const left = arr.slice(0, center); 
+//     const right = arr.slice(center); 
+//     return merge(mergeSort(left), mergeSort(right));
+// }
+
+
+// const removeDuplicates = arr => {
+//     if(!hasDuplicates(arr)) return arr;
+//     const sortedArr = mergeSort(arr.slice());
+//     const results = [];
+//    for(let i = 0; i < sortedArr.length; i++) {
+//        if(sortedArr[i + 1] !== sortedArr[i]) {
+//            results.push(sortedArr[i]);
+//        }
+//    }
+//    return results;
+// }
+
+
+// class MyArray {
+//     constructor(data) {
+//         this.data = data;
+//         this.length = 0;
+//     }
+//     delete(index) {
+//         const item = this.data[index];
+//         this.shiftItmes(index);
+//         return item;
+//     }
+
+//     shiftItems(index) {
+//         for(let i = index; i < this.length - 1; i++) {
+//             this.data[i] = this.data[i + 1];
+//         }
+//         delete this.data[this.length - 1];
+//         this.length--;
+//     }
+// }
 
 const merge = (left, right) => {
     const results = [];
@@ -168,52 +224,27 @@ const merge = (left, right) => {
         if(left[0] < right[0]) {
             results.push(left.shift());
         } else {
-            results.push(right.shift())
+            results.push(right.shift());
         }
     }
     return [...results, ...left, ...right];
 }
 
-
 const mergeSort = arr => {
-    if(!Array.isArray(arr)) return 'not an array';
-    if(arr.length <= 1) return arr;
+    if(arr.length === 1) return arr;
     const center = Math.floor(arr.length / 2);
-    const left = arr.slice(0, center); 
-    const right = arr.slice(center); 
+    const left = arr.slice(0, center);
+    const right = arr.slice(center);
     return merge(mergeSort(left), mergeSort(right));
 }
 
-
 const removeDuplicates = arr => {
-    if(!hasDuplicates(arr)) return arr;
-    const sortedArr = mergeSort(arr.slice());
+    if(!Array.isArray(arr)) return `This is not an array. It is a ${typeof arr}`;
+    const set = new Set(arr);
+    if(set.size === arr.length) return 'there are no duplicates'
     const results = [];
-   for(let i = 0; i < sortedArr.length; i++) {
-       if(sortedArr[i + 1] !== sortedArr[i]) {
-           results.push(sortedArr[i]);
-       }
-   }
-   return results;
+    set.forEach(item => results.push(item));
+    return mergeSort(results);
 }
 
-
-class MyArray {
-    constructor(data) {
-        this.data = data;
-        this.length = 0;
-    }
-    delete(index) {
-        const item = this.data[index];
-        this.shiftItmes(index);
-        return item;
-    }
-
-    shiftItems(index) {
-        for(let i = index; i < this.length - 1; i++) {
-            this.data[i] = this.data[i + 1];
-        }
-        delete this.data[this.length - 1];
-        this.length--;
-    }
-}
+console.log(removeDuplicates([1, 2, 3, 1, 1, 1, -10, 500, 1, 1, 4]));
