@@ -199,6 +199,10 @@ const removeDuplicates = arr => {
 
 
 class MyArray {
+    constructor(data) {
+        this.data = data;
+        this.length = 0;
+    }
     delete(index) {
         const item = this.data[index];
         this.shiftItmes(index);
