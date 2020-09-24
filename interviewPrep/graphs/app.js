@@ -51,14 +51,78 @@
 //     }
 // }
 
-const isPalindrome3 = str => {
-    if(typeof str !== 'string') return 'this is not a string';
-    for(let i = 0; i < str.length / 2; i++) {
-        return str[i] === str[str.length - 1 - i];
+   
+
+
+// const isPalindrome3 = str => {
+//     if(typeof str !== 'string') return 'this is not a string';
+//     for(let i = 0; i < str.length / 2; i++) {
+//         return str[i] === str[str.length - 1 - i];
+//     }
+// }
+
+// console.log(isPalindrome3('leonnoel')); // true;
+// console.log(isPalindrome3('milkboi')); // false
+// console.log(isPalindrome3('cowwow')); // false
+// console.log(isPalindrome3('blloopoollb')); // true
+
+function lastIndexOf(array, value) {
+    if(!Array.isArray(array) || typeof array !== 'string') return;
+    for (let i = array.length; i > 0; i--) {
+        if (array[i] == value) return i;
     }
+    return -1;
 }
 
-console.log(isPalindrome3('leonnoel')); // true;
-console.log(isPalindrome3('milkboi')); // false
-console.log(isPalindrome3('cowwow')); // false
-console.log(isPalindrome3('blloopoollb')); // true
+// 1
+
+// 2
+
+// 3
+
+// 4
+
+// 5
+
+// 6
+
+// 7
+
+// 8
+
+// 9
+
+// 10
+
+function Stack() {
+    this.storage = {};
+    this.length = 0;
+}
+
+Stack.prototype.push = function(value) {
+    return this.storage[this.length++] = value;
+}
+
+Stack.prototype.pop = function() {
+    const lastItem = this.storage[this.length - 1];
+   delete this.storage[this.length - 1];
+   (this.length > 0) ? this.length-- :  0; 
+   return lastItem;
+}
+
+Stack.prototype.peek = function() {
+    return this.storage[this.length - 1];
+}
+
+Stack.prototype.size = function() {
+    return this.length;
+}
+
+const pancakes = new Stack();
+pancakes.push('pancakes');
+pancakes.push('pancakes');
+pancakes.push('da glock');
+
+
+console.log('size: ', pancakes.peek());
+console.log(pancakes)
