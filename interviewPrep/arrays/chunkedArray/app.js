@@ -1,21 +1,12 @@
-const chunk= (array, size) => {
-    const chunked = [];
-
-    for(let element of array) {
-        const last = chunked[chunked.length - 1];
-
-        if(!last || last.length === size) {
-            chunked.push([element]);
-        } else {
-            last.push(element);
-        }
+const capitalize2 = str => {
+    if(typeof str !== 'string') return;
+    const words = [];
+    for(let word of str.split(' ')) {
+        words.push(word[0].toUpperCase() + word.slice(1));
     }
-    return chunked;
+    return words.join(' ');
 }
-
-const baby = arr => {
-    const lastItem = arr[arr.length - 1];
-    return lastItem * (lastItem * 1) / 2;
+const reverseStr = str => {
+    if(typeof str !== 'string') return;
+    return str.split('').reverse().join('');
 }
-
-console.log(baby([1, 2, 3, 4, 5]));

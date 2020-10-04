@@ -21,6 +21,7 @@ function capitalize(str) {
   return result;
 }
 
+
 module.exports = capitalize;
 
 // function capitalize(str) {
